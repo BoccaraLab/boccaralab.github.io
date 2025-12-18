@@ -171,8 +171,9 @@
 
         <footer>
           <div style="margin-top: 20px; font-size: 15px; color: #555;">
-            <p>Files included: <code>sleep_manipulation_db.csv</code>, <code>sleep_manipulation_db.json</code>, <code>sleep_manipulation_db.xlsx</code></p>
+            <p>Files included: <code>sleep_deprivation_db.csv</code>, <code>sleep_deprivation_db.json</code>, <code>sleep_deprivation_db.xlsx</code></p>
             <p>Author: Henriette Nikolaisen Myrland</p>
+            <p>Thesis repository analysis: <a href="https://github.com/BoccaraLab/Sleep_Deprivation_Thesis">https://github.com/BoccaraLab/Sleep_Deprivation_Thesis</a></p>
           </div>
         </footer>
       </div>
@@ -221,7 +222,7 @@
         });
       }
 
-      fetch('sleep_manipulation_db.json').then(r=>r.json()).then(data=>{
+      fetch('sleep_deprivation_db.json').then(r=>r.json()).then(data=>{
         if (!data.length) return;
 
         const allColumns = Object.keys(data[0]);
@@ -264,7 +265,7 @@
           updateColumnStyles();
         });
 
-        const excludedChecklistColumns = ["Model", "Effect", "wake NREM REM effectivness", "target manipulation timeline", "other effect", "Reference", "link"];
+        const excludedChecklistColumns = ["Model", "Effect", "wake NREM REM effectivness", "target maturation timeline", "Other effect", "Reference", "link"];
         const getUniqueValues = (field) => {
             const values = data.map(item => item[field]).filter(val => val !== null && val !== undefined && val !== '');
             return [...new Set(values)].sort();
@@ -351,8 +352,8 @@
         });
 
         // Downloads
-        document.getElementById('download-csv').addEventListener('click', () => table.download("csv", "sleep_manipulation_db.csv"));
-        document.getElementById('download-xlsx').addEventListener('click', () => table.download("xlsx", "sleep_manipulation_db.xlsx", {sheetName:"sleep_manipulation"}));
+        document.getElementById('download-csv').addEventListener('click', () => table.download("csv", "sleep_deprivation_db.csv"));
+        document.getElementById('download-xlsx').addEventListener('click', () => table.download("xlsx", "sleep_deprivation_db.xlsx", {sheetName:"sleep_deprivation"}));
 
       }).catch(e=>{ document.getElementById('table-holder').innerText = "Error loading data: "+e });
       
